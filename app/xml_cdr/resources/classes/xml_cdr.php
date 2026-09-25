@@ -736,9 +736,7 @@ class xml_cdr {
 			//misc
 			$this->array[$key][0]['xml_cdr_uuid']       = $call_uuid;
 			// Teams Direct Routing R-URI is +E164;ext=NNN — show the answering extension in CDR.
-			if (is_string($destination_number) && preg_match('/(?:^|; )ext=([0-9]+)/', str_replace(';', '; ', $destination_number), $m_ext)) {
-				$destination_number = $m_ext[1];
-			} elseif (is_string($destination_number) && preg_match('/ext=([0-9]+)/', $destination_number, $m_ext)) {
+			if (is_string($destination_number) && preg_match('/(?:^|;\s*)ext=([0-9]+)/', $destination_number, $m_ext)) {
 				$destination_number = $m_ext[1];
 			}
 			$this->array[$key][0]['destination_number'] = $destination_number;
